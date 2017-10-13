@@ -138,6 +138,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
                     if (to.isHidden()) {
                         ft.show(to);
                         Log.d("----------------","被隐藏了");
+                        Log.d("----------------","为什么这个没有添加到GitHub上去");
+
                     }
                 }
 //                else {
