@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         frameLayout= (FrameLayout) findViewById(R.id.layFrame);
 
 
-        bottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);
+        bottomNavigationBar.setMode(BottomNavigationBar.MODE_SHIFTING);
         bottomNavigationBar
                 .setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC
                 );
@@ -134,7 +135,21 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
                    ft.hide(from).show(to);
                 } else {
                    ft.hide(from).add(R.id.layFrame,to);
+                    if (to.isHidden()) {
+                        ft.show(to);
+                        Log.d("----------------","被隐藏了");
+                    }
                 }
+//                else {
+//                    // 隐藏当前的fragment，add下一个到Activity中
+//                    ft.hide(from).add(R.id.layFrame, fragment);
+//                    if (fragment.isHidden()) {
+//                        ft.show(fragment);
+//                        Logger.d("被隐藏了");
+//                    }
+//                }
+
+
                 ft.commitAllowingStateLoss();
             }
         }
